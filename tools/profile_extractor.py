@@ -53,7 +53,7 @@ class SerpAPI(SerpAPIWrapper):
     
     
 def get_profile_url(text: str):
-    """Searches for linkedin or twitter profile"""
+    """Searches for Linkedin or twitter Profile Page."""
     serp_agent = SerpAPI()
     # serp_agent = SerpAPIWrapper(serpapi_api_key=os.environ["SERP_API_KEY"])
     return serp_agent.run(text)
