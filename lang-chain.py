@@ -4,6 +4,7 @@ from langchain.chains import LLMChain
 from dotenv import load_dotenv
 import os
 from third_parties.linkedin import scrape_linkedin_data
+from agents.linkdedin_lookup import get_linkedin_profile_url
 
 load_dotenv()
 
@@ -13,7 +14,8 @@ if __name__ == '__main__':
     1- a short summary
     2- two interesting facts about them
 """
-    linkedin_data = scrape_linkedin_data('https://www.linkedin.com/in/harrison-chase-961287118/')
+    linkedin_profile_url = get_linkedin_profile_url('harrison chase')
+    linkedin_data = scrape_linkedin_data(linkedin_profile_url)
 
     summary_prompt = PromptTemplate(input_variables=["information"], template=summary_template)
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo", openai_api_key=os.environ['OPEN_API_KEY'])
