@@ -6,7 +6,7 @@ from tools.profile_extractor import get_profile_url
 
 def get_twitter_username(full_name: str):
     """This method will get username of twitter profile"""
-    llm = ChatOpenAI(temperature=0.5, openai_api_key=os.environ['OPEN_API_KEY'])
+    llm = ChatOpenAI(temperature=0, openai_api_key=os.environ['OPEN_API_KEY'])
     tools = [
         Tool(
             name="Crawl Google 4 Twitter profile page",
@@ -15,10 +15,6 @@ def get_twitter_username(full_name: str):
         )
     ]
 
-    # summary = """
-    #     For given user {full_name} pull it's twitter profile data and extract username from the link to it's twitter profile.
-    #     Your answer should only username extracted from .
-    # """
     summary = """
     given the name {full_name} I want you to find a link to their Twitter profile page, and extract from it their username.
        In Your Final answer only the person's username
